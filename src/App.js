@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+
 import './App.css';
+import IncrementDecrement from "./components/incrementDecrement/incrementDecrement";
+import Comments from "./components/comments/comments";
+import FullComment from "./components/fullComment/fullComment";
+import {useState} from "react";
 
 function App() {
+    let [chosenComment, setChosenComment] = useState({});
+    const lift = (obj)=>{
+        setChosenComment({...obj})
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={'container'}>
+{/*<IncrementDecrement/>*/}
+        <div className={'leftSide'}>
+      <Comments lift={lift}/>
+
+        </div>
+
+        {
+            chosenComment &&
+           ( <div className={'rightSide'}>
+                <FullComment value={chosenComment}/>
+            </div>)
+        }
     </div>
   );
 }

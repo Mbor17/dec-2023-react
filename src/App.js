@@ -1,14 +1,12 @@
 import React, {useEffect} from 'react';
 import axios from "axios";
+import Cars from "./components/cars/Cars";
 
 const App = () => {
-  useEffect(()=>{
-    axios('htpp://owu.linkpc.net/carsAPI/v1/cars')
-      }
-  )
+
     return (
         <div>
-          
+          <Cars/>
         </div>
     );
 };

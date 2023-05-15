@@ -1,7 +1,8 @@
 import React, {FC} from "react";
+import {SubmitHandler, useForm} from "react-hook-form";
+
 import {IUseState} from "../types/useState.type";
 import {IComment} from "../interfaces/comment.interface";
-import {SubmitHandler, useForm} from "react-hook-form";
 import comment from "./Comment";
 import {commentService} from "../services/comment.service";
 
@@ -12,9 +13,10 @@ setComments:IUseState<IComment[]>
 const CommentForm:FC<IProps>=({setComments}) => {
     const {register, handleSubmit,reset} = useForm<IComment>();
 
-    const save:SubmitHandler<Comment>=async {comment}=>{
- const {data} = await commentService.create(comment);
-        setComments(prev=>[prev,data])
+    const save:SubmitHandler<IComment>=async (comment)=>{
+    const {data} = await commentService.create(comment);
+    setComments(prev=>[...prev,data]);
+    reset()
     }
 
     return (

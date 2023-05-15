@@ -4,19 +4,22 @@ import UserForm from "../components/UserForm";
 import Users from "../components/Users";
 import user from "../components/User";
 import {userService} from "../services/user.service";
+import {IUseState} from "../types/useState.type";
 
 interface IProps{
+
 
     }
 
     const UserPage:FC<IProps>=() => {
     const [users,setUsers] = useState<IUser[]>([]);
+
     useEffect(()=>{
         userService.getAll().then(value => value.data).then(value => setUsers(value))
     },[])
         return (
             <div>
-                <UserForm setUsers={setUsers}/>
+                <UserForm setUsers={setUsers} />
                 <hr/>
                 <Users users={users}/>
             </div>

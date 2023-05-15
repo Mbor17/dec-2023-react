@@ -6,8 +6,9 @@ import {userService} from "../services/user.service";
 import {IUseState} from "../types/useState.type";
 
 
-interface IProps{
-setUsers:IUseState<IUser[]>;
+interface IProps {
+    setUsers: IUseState<IUser[]>;
+
 }
 
 const UserForm:FC<IProps>=({setUsers}) => {
